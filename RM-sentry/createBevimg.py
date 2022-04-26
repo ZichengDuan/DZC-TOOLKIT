@@ -6,29 +6,11 @@ from PIL import Image
 from torchvision.transforms import ToTensor
 import numpy as np
 import torch
+
 import torchvision.transforms as T
-from .misc.datasets import oftFrameDataset, Robomaster_1_dataset, MultiviewX
+from misc.datasets import oftFrameDataset, Robomaster_1_dataset, MultiviewX
 intrinsic_camera_matrix_filenames = ["intri_left.xml", "intri_right.xml"]
 extrinsic_camera_matrix_filenames = ["extri_left.xml", "extri_right.xml"]
-
-def get_intrinsic_extrinsic_matrix(self, camera_i):
-    intrinsic_camera_path = os.path.join(self.root, 'calibration', 'intrinsic')
-    intrinsic_params_file = cv2.FileStorage(os.path.join(intrinsic_camera_path,
-                                                         intrinsic_camera_matrix_filenames[camera_i]),
-                                            flags=cv2.FILE_STORAGE_READ)
-    intrinsic_matrix = intrinsic_params_file.getNode('intri_matrix').mat()
-    intrinsic_params_file.release()
-
-    extrinsic_camera_path = os.path.join(self.root, 'calibration', 'extrinsic')
-    extrinsic_params_file = cv2.FileStorage(os.path.join(extrinsic_camera_path,
-                                                         extrinsic_camera_matrix_filenames[camera_i]),
-                                            flags=cv2.FILE_STORAGE_READ)
-    extrinsic_matrix = extrinsic_params_file.getNode('extri_matrix').mat()
-    extrinsic_params_file.release()
-    for i in range(3):
-        extrinsic_matrix[i, 3] /= 10
-    return intrinsic_matrix, extrinsic_matrix
-
 
 def get_worldgrid_from_worldcoord(self, world_coord):
     coord_x, coord_y = world_coord
@@ -79,43 +61,58 @@ class DataProcessor():
         # world_left = kornia.warp_perspective(img_left.unsqueeze(0), proj_mat, self.reducedgrid_shape)
 
         test_img_left = kornia.warp_perspective(img_left , torch.tensor(
-            np.linalg.inv(self.proj_mats[0].repeat([1, 1, 1]).float())), (480, 640))
+            np.linalg.inv(self.proj_mats[1].repeat([1, 1, 1]).float())), (480, 640))
         test_img_left = test_img_left[0, :].numpy().transpose([1, 2, 0])
         test_img_left = Image.fromarray((test_img_left * 255).astype('uint8'))
         test_img_left.save("test_print.jpg")
 
 
-    def cropImage(self, imgFolder):
-        filenames = sorted(os.listdir(imgFolder))
+    def cropImage(self, root, imgFolder, isleft=True, id=-1):
+        filenames = sorted(os.listdir(imgFolder + "left1"))
         print(filenames)
         for idx, filename in enumerate(filenames):
             print(idx)
             # 读取图片
-            img1 = Image.open(imgFolder + "/%s" % filename).convert('RGB')
-            # img2 = Image.open(imgFolder + "/right2/%s" % filename).convert('RGB')
+            if id == -1 or idx in id :
+                img1 = Image.open(imgFolder + "left1/%s" % filename).convert('RGB')
+                img2 = Image.open(imgFolder + "right2/%s" % filename).convert('RGB')
 
-            img1 = ToTensor()(img1)
-            # img2 = ToTensor()(img2)
+                img1 = ToTensor()(img1)
+                img2 = ToTensor()(img2)
 
-            proj_mat = self.proj_mats[1].repeat([1, 1, 1]).float()
-            world1 = kornia.warp_perspective(img1.unsqueeze(0), proj_mat, self.reducedgrid_shape)
-            # proj_mat = self.proj_mats[1].repeat([1, 1, 1]).float()
-            # world2 = kornia.warp_perspective(img2.unsqueeze(0), proj_mat, self.reducedgrid_shape)
+                if isleft == 1:
+                    left_proj_mat = self.proj_mats[0].repeat([1, 1, 1]).float()
+                elif isleft == 2:
+                    right_proj_mat = self.proj_mats[1].repeat([1, 1, 1]).float()
+                else:
+                    left_proj_mat = self.proj_mats[0].repeat([1, 1, 1]).float()
+                    right_proj_mat = self.proj_mats[1].repeat([1, 1, 1]).float()
+                # 模拟矩阵不准
+                left_proj_mat = torch.matmul(left_proj_mat, torch.tensor([[[0.989,0.,0.9988], [0, 1, 0.], [0., 0., 1]]]))
+                right_proj_mat = torch.matmul(right_proj_mat, torch.tensor([[[1, 0.,0.], [0, 1.1, 0.], [0., 0., 0.978]]]))
+
+                world1 = kornia.geometry.warp_perspective(img1.unsqueeze(0), left_proj_mat, self.reducedgrid_shape)
+                world2 = kornia.geometry.warp_perspective(img2.unsqueeze(0), right_proj_mat, self.reducedgrid_shape)
+
+                world1 = kornia.geometry.vflip(world1)
+                world2 = kornia.geometry.vflip(world2)
+
+                # ---------------------处理tensor化的图片，回到原图-------------------
+                world1 = world1[0, :].numpy().transpose([1, 2, 0])
+                world1 = Image.fromarray((world1 * 255).astype('uint8'))
+
+                world2 = world2[0, :].numpy().transpose([1, 2, 0])
+                world2 = Image.fromarray((world2 * 255).astype('uint8'))
+
+                if isleft == 1:
+                    world1.save(root + "/bevimgs_left/%d.jpg" % int(filename[:-4]))
+                elif isleft == 2:
+                    world2.save(root + "/bevimgs_right/%d.jpg" % int(filename[:-4]))
+                else:
+                    final = Image.blend(world1, world2, 0.5)
+                    final.save(root + "/bevimgs/%d.jpg" % int(filename[:-4]))
 
 
-            world1 = kornia.vflip(world1)
-
-            # ---------------------处理tensor化的图片，回到原图-------------------
-            world1 = world1[0, :].numpy().transpose([1, 2, 0])
-            world1 = Image.fromarray((world1 * 255).astype('uint8'))
-
-            # final = Image.blend(final1, final2, 0.5)
-
-            # print(self.data_dir + "/bevimgs/%s.jpg" % filename[:-4])
-            # world1.save(self.data_dir + "/left_bevimgs/%s.jpg" % filename[:-4])
-            # world2.save(self.data_dir + "/right_bevimgs/%s.jpg" % filename[:-4])
-            # final = Image.blend(world1, world2, 0.5)
-            world1.save("/home/dzc/Data/opensource/right_bevimgs/%s.jpg" % filename[:-4])
 
     def get_imgcoord2worldgrid_matrices(self, intrinsic_matrices, extrinsic_matrices, worldgrid2worldcoord_mat):
         projection_matrices = {}
@@ -171,11 +168,13 @@ if __name__ == "__main__":
     normalize = T.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
     train_trans = T.Compose([T.ToTensor()])
 
-    data_path = os.path.expanduser('/home/dzc/Data/opensource')
+    data_path = "/home/dzc/Data/MultiviewX"
+
+    data_path = os.path.expanduser(data_path)
     base = Robomaster_1_dataset(data_path, args)
     dataset = oftFrameDataset(base, train=True, transform=train_trans, grid_reduce=1)
     processor = DataProcessor(dataset, data_path)
     # processor.testPrint()
     # processor.cropImage(data_path + "/img", data_path + "/annotations", None, None)
-    processor.cropImage("/home/dzc/Data/opensource/img/right2")
+    processor.cropImage(data_path ,data_path + "/Image_subsets/", isleft=3)
     # processor.geneAnno("/home/dzc/Data/1cardata/annotations", "/home/dzc/Data/carONLYdata/annotations")

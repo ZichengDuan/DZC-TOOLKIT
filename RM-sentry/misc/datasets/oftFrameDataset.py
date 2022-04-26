@@ -6,7 +6,7 @@ from PIL import Image
 from scipy.sparse import coo_matrix
 import torch
 from torchvision.transforms import ToTensor
-from multiview_detector.datasets.Robomaster_1 import *
+from misc.datasets.Robomaster_1 import *
 import warnings
 import cv2
 from matplotlib import pyplot as plt
