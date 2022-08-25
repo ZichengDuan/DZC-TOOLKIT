@@ -74,8 +74,8 @@ class DataProcessor():
             print(idx)
             # 读取图片
             if id == -1 or idx in id :
-                img1 = Image.open(imgFolder + "left1/%s" % filename).convert('RGB')
-                img2 = Image.open(imgFolder + "right2/%s" % filename).convert('RGB')
+                img1 = Image.open(imgFolder + "C1/%s" % filename).convert('RGB')
+                img2 = Image.open(imgFolder + "C2/%s" % filename).convert('RGB')
 
                 img1 = ToTensor()(img1)
                 img2 = ToTensor()(img2)
@@ -111,7 +111,7 @@ class DataProcessor():
                 else:
                     final = Image.blend(world1, world2, 0.5)
                     final.save(root + "/bevimgs/%d.jpg" % int(filename[:-4]))
-
+            break
 
 
     def get_imgcoord2worldgrid_matrices(self, intrinsic_matrices, extrinsic_matrices, worldgrid2worldcoord_mat):
@@ -171,7 +171,8 @@ if __name__ == "__main__":
     data_path = "/home/dzc/Data/MultiviewX"
 
     data_path = os.path.expanduser(data_path)
-    base = Robomaster_1_dataset(data_path, args)
+    # base = Robomaster_1_dataset(data_path, args)
+    base = MultiviewX(data_path)
     dataset = oftFrameDataset(base, train=True, transform=train_trans, grid_reduce=1)
     processor = DataProcessor(dataset, data_path)
     # processor.testPrint()
