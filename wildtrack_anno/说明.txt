@@ -1,3 +1,0 @@
-calibration是相机内外参标定文件，完全不用管，用来数据可视化的。
-samples是样本图像及已有标注。
-visualize.py是可视化数据，直接在当前文件夹运行visualize.py就可以看到样本图像的已有标注。

@@ -1,0 +1,431 @@
+[
+    {
+        "Pedestrian_id": 0,
+        "bbox": {
+            "xmin": 1510,
+            "ymin": 139,
+            "xmax": 1561,
+            "ymax": 299
+        },
+        "standing_point": {
+            "x": 1527.1829607188236,
+            "y": 299.7634543587496
+        }
+    },
+    {
+        "Pedestrian_id": 1,
+        "bbox": {
+            "xmin": 1273,
+            "ymin": 129,
+            "xmax": 1319,
+            "ymax": 282
+        },
+        "standing_point": {
+            "x": 1290.5118752624744,
+            "y": 282.98158927691713
+        }
+    },
+    {
+        "Pedestrian_id": 2,
+        "bbox": {
+            "xmin": 1326,
+            "ymin": 128,
+            "xmax": 1372,
+            "ymax": 279
+        },
+        "standing_point": {
+            "x": 1343.4679297300202,
+            "y": 279.99445795652065
+        }
+    },
+    {
+        "Pedestrian_id": 3,
+        "bbox": {
+            "xmin": 69,
+            "ymin": 147,
+            "xmax": 152,
+            "ymax": 378
+        },
+        "standing_point": {
+            "x": 121.25495129576889,
+            "y": 379.0129492860606
+        }
+    },
+    {
+        "Pedestrian_id": 4,
+        "bbox": {
+            "xmin": 442,
+            "ymin": 134,
+            "xmax": 500,
+            "ymax": 330
+        },
+        "standing_point": {
+            "x": 475.5470228166211,
+            "y": 331.1635515199116
+        }
+    },
+    {
+        "Pedestrian_id": 5,
+        "bbox": {
+            "xmin": 1739,
+            "ymin": 178,
+            "xmax": 1812,
+            "ymax": 390
+        },
+        "standing_point": {
+            "x": 1761.2648430902532,
+            "y": 391.13171986164866
+        }
+    },
+    {
+        "Pedestrian_id": 6,
+        "bbox": {
+            "xmin": 1060,
+            "ymin": 109,
+            "xmax": 1097,
+            "ymax": 239
+        },
+        "standing_point": {
+            "x": 1075.9603480137746,
+            "y": 240.1100167310591
+        }
+    },
+    {
+        "Pedestrian_id": 7,
+        "bbox": {
+            "xmin": 1555,
+            "ymin": 139,
+            "xmax": 1607,
+            "ymax": 298
+        },
+        "standing_point": {
+            "x": 1572.6042415638412,
+            "y": 298.4934675441922
+        }
+    },
+    {
+        "Pedestrian_id": 8,
+        "bbox": {
+            "xmin": 924,
+            "ymin": 137,
+            "xmax": 972,
+            "ymax": 318
+        },
+        "standing_point": {
+            "x": 945.5642117681127,
+            "y": 318.89200912962474
+        }
+    },
+    {
+        "Pedestrian_id": 9,
+        "bbox": {
+            "xmin": 504,
+            "ymin": 129,
+            "xmax": 557,
+            "ymax": 315
+        },
+        "standing_point": {
+            "x": 533.7959167060357,
+            "y": 315.930351362107
+        }
+    },
+    {
+        "Pedestrian_id": 10,
+        "bbox": {
+            "xmin": 1282,
+            "ymin": 121,
+            "xmax": 1324,
+            "ymax": 261
+        },
+        "standing_point": {
+            "x": 1298.5573212472414,
+            "y": 261.62637576104845
+        }
+    },
+    {
+        "Pedestrian_id": 11,
+        "bbox": {
+            "xmin": 1434,
+            "ymin": 768,
+            "xmax": 1822,
+            "ymax": 1831
+        },
+        "standing_point": {
+            "x": 1553.9897272325786,
+            "y": 1826.3728808981527
+        }
+    },
+    {
+        "Pedestrian_id": 12,
+        "bbox": {
+            "xmin": 1692,
+            "ymin": 157,
+            "xmax": 1753,
+            "ymax": 337
+        },
+        "standing_point": {
+            "x": 1710.8102909259069,
+            "y": 337.6649941078174
+        }
+    },
+    {
+        "Pedestrian_id": 13,
+        "bbox": {
+            "xmin": 939,
+            "ymin": 107,
+            "xmax": 975,
+            "ymax": 241
+        },
+        "standing_point": {
+            "x": 955.4938294239731,
+            "y": 241.35779861958233
+        }
+    },
+    {
+        "Pedestrian_id": 14,
+        "bbox": {
+            "xmin": 1545,
+            "ymin": 148,
+            "xmax": 1602,
+            "ymax": 320
+        },
+        "standing_point": {
+            "x": 1564.2859308222917,
+            "y": 320.9580502047424
+        }
+    },
+    {
+        "Pedestrian_id": 15,
+        "bbox": {
+            "xmin": 1383,
+            "ymin": 123,
+            "xmax": 1427,
+            "ymax": 263
+        },
+        "standing_point": {
+            "x": 1399.189146719364,
+            "y": 263.95445782215995
+        }
+    },
+    {
+        "Pedestrian_id": 16,
+        "bbox": {
+            "xmin": 1651,
+            "ymin": 137,
+            "xmax": 1702,
+            "ymax": 289
+        },
+        "standing_point": {
+            "x": 1667.2372780768808,
+            "y": 289.7777489959791
+        }
+    },
+    {
+        "Pedestrian_id": 17,
+        "bbox": {
+            "xmin": 894,
+            "ymin": 360,
+            "xmax": 1039,
+            "ymax": 883
+        },
+        "standing_point": {
+            "x": 957.4298172185796,
+            "y": 883.4364961226684
+        }
+    },
+    {
+        "Pedestrian_id": 18,
+        "bbox": {
+            "xmin": 750,
+            "ymin": 118,
+            "xmax": 789,
+            "ymax": 276
+        },
+        "standing_point": {
+            "x": 769.7196817176375,
+            "y": 276.8540021583498
+        }
+    },
+    {
+        "Pedestrian_id": 19,
+        "bbox": {
+            "xmin": 1063,
+            "ymin": 330,
+            "xmax": 1201,
+            "ymax": 801
+        },
+        "standing_point": {
+            "x": 1119.0102610627926,
+            "y": 802.0376035204645
+        }
+    },
+    {
+        "Pedestrian_id": 20,
+        "bbox": {
+            "xmin": 1013,
+            "ymin": 156,
+            "xmax": 1071,
+            "ymax": 364
+        },
+        "standing_point": {
+            "x": 1038.2380503032114,
+            "y": 364.79010215807483
+        }
+    },
+    {
+        "Pedestrian_id": 21,
+        "bbox": {
+            "xmin": 1473,
+            "ymin": 139,
+            "xmax": 1524,
+            "ymax": 300
+        },
+        "standing_point": {
+            "x": 1490.8490161957347,
+            "y": 301.3577599723773
+        }
+    },
+    {
+        "Pedestrian_id": 22,
+        "bbox": {
+            "xmin": 1120,
+            "ymin": 164,
+            "xmax": 1181,
+            "ymax": 379
+        },
+        "standing_point": {
+            "x": 1144.9353580576328,
+            "y": 379.24303333406544
+        }
+    },
+    {
+        "Pedestrian_id": 23,
+        "bbox": {
+            "xmin": 1190,
+            "ymin": 114,
+            "xmax": 1229,
+            "ymax": 247
+        },
+        "standing_point": {
+            "x": 1205.9665521885101,
+            "y": 247.6437245334051
+        }
+    },
+    {
+        "Pedestrian_id": 24,
+        "bbox": {
+            "xmin": 1214,
+            "ymin": 124,
+            "xmax": 1258,
+            "ymax": 273
+        },
+        "standing_point": {
+            "x": 1231.3898862074773,
+            "y": 273.7017211366623
+        }
+    },
+    {
+        "Pedestrian_id": 25,
+        "bbox": {
+            "xmin": 938,
+            "ymin": 135,
+            "xmax": 986,
+            "ymax": 312
+        },
+        "standing_point": {
+            "x": 959.6604991023415,
+            "y": 313.29142268169943
+        }
+    },
+    {
+        "Pedestrian_id": 26,
+        "bbox": {
+            "xmin": 1038,
+            "ymin": 295,
+            "xmax": 1159,
+            "ymax": 715
+        },
+        "standing_point": {
+            "x": 1087.541785126851,
+            "y": 716.1623276752488
+        }
+    },
+    {
+        "Pedestrian_id": 27,
+        "bbox": {
+            "xmin": 1732,
+            "ymin": 155,
+            "xmax": 1792,
+            "ymax": 332
+        },
+        "standing_point": {
+            "x": 1750.4956815286564,
+            "y": 332.78686950684954
+        }
+    },
+    {
+        "Pedestrian_id": 28,
+        "bbox": {
+            "xmin": 1383,
+            "ymin": 131,
+            "xmax": 1430,
+            "ymax": 284
+        },
+        "standing_point": {
+            "x": 1400.1855589661257,
+            "y": 284.58959170590106
+        }
+    },
+    {
+        "Pedestrian_id": 29,
+        "bbox": {
+            "xmin": 1651,
+            "ymin": 142,
+            "xmax": 1704,
+            "ymax": 301
+        },
+        "standing_point": {
+            "x": 1667.7811747258627,
+            "y": 301.7638345418499
+        }
+    },
+    {
+        "Pedestrian_id": 30,
+        "bbox": {
+            "xmin": 1361,
+            "ymin": 144,
+            "xmax": 1415,
+            "ymax": 319
+        },
+        "standing_point": {
+            "x": 1381.137715261441,
+            "y": 319.6739284318922
+        }
+    },
+    {
+        "Pedestrian_id": 31,
+        "bbox": {
+            "xmin": 1202,
+            "ymin": 128,
+            "xmax": 1248,
+            "ymax": 284
+        },
+        "standing_point": {
+            "x": 1220.654500321051,
+            "y": 284.9597849166318
+        }
+    },
+    {
+        "Pedestrian_id": 32,
+        "bbox": {
+            "xmin": 953,
+            "ymin": 104,
+            "xmax": 987,
+            "ymax": 232
+        },
+        "standing_point": {
+            "x": 968.153636708074,
+            "y": 233.00698698193472
+        }
+    }
+]
